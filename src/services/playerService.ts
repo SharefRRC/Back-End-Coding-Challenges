@@ -1,5 +1,5 @@
 export interface Player {
-    id: string;
+    id: number;
     name: string;
     wins: number;
     losses: number;
@@ -7,17 +7,21 @@ export interface Player {
 }
 
 const players: Player[] = [
-    { id: '1', name: 'ShadowStrike', wins: 15, losses: 5, totalScore: 28500 },
-    { id: '2', name: 'NoobMaster', wins: 3, losses: 12, totalScore: 4200 },
-    { id: '3', name: 'ProGamer99', wins: 0, losses: 0, totalScore: 0 }
+    { id: 1 , name: 'ShadowStrike', wins: 15, losses: 5, totalScore: 28500 },
+    { id: 2, name: 'NoobMaster', wins: 3, losses: 12, totalScore: 4200 },
+    { id: 3, name: 'ProGamer99', wins: 0, losses: 0, totalScore: 0 }
 ]
 
 export function getAllPlayers(): Player[] {
     return players;
 }
 
+export function getPlayerByID(id: number): Player | null {
+    return players.find(p => p.id === id) || null;
+}
+
 export function calculateRating(player: Player): number {
-    const totalGames: number = player. wins+ + player.losses;
+    const totalGames: number = player. wins + player.losses;
     if (totalGames === 0) {
         return 0;
 }
